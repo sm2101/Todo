@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React from 'react';
 import { Nav, initializeIcons } from '@fluentui/react';
 
 const navigationStyles = {
@@ -52,6 +52,7 @@ function Header() {
   return (
     <Nav
       groups={links}
+      selectedKey = {null}
       styles={navigationStyles}
     />
   );

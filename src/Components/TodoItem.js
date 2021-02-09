@@ -24,7 +24,7 @@ const TodoItem = (props) => {
         <Card aria-label="Clickable horizontal card " horizontal tokens={cardTokens}>
             <Card.Section>
                 <Text >
-                {title} . {due?due:"No due date specified"}
+                {title} . {due != `"`?due:"No due date specified"}
                 </Text>
                 <Text >{desc}</Text>
                 {stat?<Dropdown
