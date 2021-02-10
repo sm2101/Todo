@@ -7,7 +7,8 @@ import TodoItem from './TodoItem';
 
 
 const TodoList = () => {
-    const todos = useSelector(state => state);
+    const {todos} = useSelector(state => ({...state}));
+    // console.log(todos);
     const style = {
         margin: '10vh 0',
     }

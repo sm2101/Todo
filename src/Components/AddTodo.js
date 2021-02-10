@@ -4,6 +4,7 @@ import { DatePicker, DayOfWeek} from '@fluentui/react';
 import { Dropdown } from '@fluentui/react/lib/Dropdown';
 import { PrimaryButton } from 'office-ui-fabric-react';
 import {v1 as uuid} from 'uuid';
+import {useSelector} from 'react-redux';
   const DayPickerStrings = { 
     months: [ 
       'January',
@@ -99,8 +100,9 @@ const AddTodo = ({history}) => {
         window.localStorage.setItem("TodoInfo",JSON.stringify(todo))
         history.push("/confirm")
     }
+    const {theme} = useSelector(state => ({...state}))
     return (
-        <div className = " container">
+        <div className = {theme.mode?"container container-light":"container container-dark"}>
             <div className="ms-Grid">
                 <div className="ms-Grid-row">
                     <div className="ms-Grid-col ms-sm12">

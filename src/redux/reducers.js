@@ -1,4 +1,4 @@
-import {ADD_TODO,DELETE_TODO,UPDATE_TODO} from './actions';
+import {ADD_TODO,DELETE_TODO,UPDATE_TODO,CHANGE_THEME} from './actions';
 import {todos} from './states'
 export const reducer = (state = todos,action) =>{
     let newTodos;
@@ -24,4 +24,15 @@ export const reducer = (state = todos,action) =>{
             return newTodos;
     }
     return state;
+}
+
+export const themeReducer = (state ={mode:false}, action) =>{
+    switch (action.type) {
+        case CHANGE_THEME:
+            let mode = !state.mode
+            return {...state,mode}
+    
+        default:
+            return state;
+    }
 }

@@ -3,7 +3,7 @@ import { Card } from  '@uifabric/react-cards';
 import { Dropdown } from '@fluentui/react/lib/Dropdown';
 import { Text, initializeIcons } from '@fluentui/react';
 import { PrimaryButton } from 'office-ui-fabric-react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { deleteTodo, updateTodo , addTodo} from '../redux/actions';
 import { useHistory } from "react-router-dom"
 const statusOptions = [
@@ -20,8 +20,9 @@ const TodoItem = (props) => {
     const [status, setStatus] = useState(stat),
           [edit, setEdit] = useState(false);
     const history = useHistory();
+    const {theme} = useSelector(state => ({...state}))
     return (
-        <Card aria-label="Clickable horizontal card " horizontal tokens={cardTokens}>
+        <Card aria-label="Clickable horizontal card " horizontal tokens={cardTokens} className = {theme.mode?"card card-light":"card card-dark"}>
             <Card.Section>
                 <Text >
                 {title} . {due != `"`?due:"No due date specified"}
@@ -44,6 +45,7 @@ const TodoItem = (props) => {
                 onClick = {() => {
                     history.push("/add");
                 }}
+                className = "ctr-btn"
                 />
                 <PrimaryButton 
                 text = "Save"
@@ -52,6 +54,7 @@ const TodoItem = (props) => {
                     window.localStorage.removeItem("TodoInfo")
                     history.push("/");
                 }}
+                className = "ctr-btn"
                 />
                 </div>:<div><PrimaryButton 
                 text = "Save"
@@ -65,10 +68,11 @@ const TodoItem = (props) => {
                         setEdit(false)
                     }
                 }}
+                className = "ctr-btn"
                 />
                 <PrimaryButton 
                 text = "Delete"
-                className = "danger-btn"
+                className = "danger-btn ctrl-btn"
                 onClick = {() => dispatch(deleteTodo(id))}
                 /></div>}
             </Card.Section>

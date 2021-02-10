@@ -1,15 +1,7 @@
 import React from 'react';
 import { Nav, initializeIcons } from '@fluentui/react';
+import {useSelector} from 'react-redux';
 
-const navigationStyles = {
-  root: {
-    height: '100vh',
-    boxSizing: 'border-box',
-    border: '1px solid #eee',
-    overflowY: 'auto',
-    paddingTop: '10vh',
-  },
-};
 
 const links = [
   {
@@ -48,12 +40,13 @@ const links = [
 ];
 
 function Header() {
+  const {theme} = useSelector(state => ({...state}))
     initializeIcons();
   return (
     <Nav
       groups={links}
       selectedKey = {null}
-      styles={navigationStyles}
+      className={theme.mode?"nav nav-light":"nav nav-dark"}
     />
   );
 }

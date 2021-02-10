@@ -1,4 +1,7 @@
-import {createStore} from 'redux';
-import {reducer} from "./reducers";
+import {createStore, combineReducers} from 'redux';
+import {reducer,themeReducer} from "./reducers";
 
-export const store = createStore(reducer);
+export const store = createStore(combineReducers({
+    todos:reducer,
+    theme:themeReducer
+}));
